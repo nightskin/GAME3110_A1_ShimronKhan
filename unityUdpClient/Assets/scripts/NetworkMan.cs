@@ -18,7 +18,6 @@ public class NetworkMan : MonoBehaviour
         p_objs = new List<GameObject>();
 
         udp.Connect("3.130.163.55", 12345);
-        //udp.Connect("192.168.1.101", 12345);
         Byte[] sendBytes = Encoding.ASCII.GetBytes("connect");
 
         udp.Send(sendBytes, sendBytes.Length);

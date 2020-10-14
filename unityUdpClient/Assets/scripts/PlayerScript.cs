@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public string id;
-    public float speed = 1;
+    public float speed = 3;
     Vector3 movement;
     private void Start()
     {
@@ -17,20 +17,25 @@ public class PlayerScript : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.A))
         {
-            movement.x -= speed * Time.deltaTime;
+            movement.x = speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            movement.x += speed * Time.deltaTime;
+            movement.x = -speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.W))
         {
-            movement.z -= speed * Time.deltaTime;
+            movement.z = speed * Time.deltaTime;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            movement.z += speed * Time.deltaTime;
+            movement.z = speed * Time.deltaTime;
         }
+        if(Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.W))
+        {
+            movement = Vector3.zero;
+        }
+
         transform.position += movement;
     }
 }
